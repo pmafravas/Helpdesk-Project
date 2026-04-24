@@ -1,0 +1,16 @@
+
+src/HelpdeskSystem/.idea/
+
+src/HelpdeskSystem/Application/obj/
+
+src/HelpdeskSystem/BlazorUI/obj/
+
+src/HelpdeskSystem/Domain/obj/
+
+src/HelpdeskSystem/Infrastructure/obj/
+
+src/HelpdeskSystem/obj/
+
+src/HelpdeskSystem/HelpWorker/obj/
+
+.DS_Store
