@@ -14,3 +14,13 @@ src/HelpdeskSystem/obj/
 src/HelpdeskSystem/HelpWorker/obj/
 
 .DS_Store
+
+src/HelpdeskSystem/Application/bin/
+
+src/HelpdeskSystem/BlazorUI/bin/
+
+src/HelpdeskSystem/Domain/bin/
+
+src/HelpdeskSystem/HelpWorker/bin/
+
+src/HelpdeskSystem/Infrastructure/bin/
