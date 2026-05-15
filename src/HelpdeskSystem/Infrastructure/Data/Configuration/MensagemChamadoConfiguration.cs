@@ -16,6 +16,6 @@ public class MensagemChamadoConfiguration : IEntityTypeConfiguration<MensagemCha
         builder.Property(c => c.Mensagem).HasColumnName("ConteudoMensagem").HasColumnType("varchar").HasMaxLength(2000).IsRequired();
         builder.Property(c => c.DataCriacao).IsRequired();
         builder.Property(c => c.Editado).IsRequired();
-        builder.HasOne<ApplicationUser>().WithMany().HasForeignKey(c => c.UsuarioDono).OnDelete(DeleteBehavior.Restrict);
+        builder.HasOne(c => c.Autor).WithMany().HasForeignKey(c => c.UsuarioDono).OnDelete(DeleteBehavior.Restrict);
     }
 }

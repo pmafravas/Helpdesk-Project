@@ -13,7 +13,7 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddDbContext<HelpdeskDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString), 
-        mysqlOptions => mysqlOptions.MigrationsAssembly("Helpdesk.Infrastructure")));
+        mysqlOptions => mysqlOptions.MigrationsAssembly("Infrastructure")));
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>(options =>
     {
