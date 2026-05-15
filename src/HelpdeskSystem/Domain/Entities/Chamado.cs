@@ -6,8 +6,8 @@ namespace Domain.Entities;
 public class Chamado
 {
     public int ChamadoId { get; set; }
-    public ApplicationUser SolicitanteId { get; private set; }
-    public ApplicationUser ResponsavelId { get; private set; }
+    public Guid SolicitanteId { get; private set; }
+    public Guid ResponsavelId { get; private set; }
     public string Titulo { get; private set; }
     public string Descricao { get; private set; }
     public List<MensagemChamado> Mensagens { get; private set; }
@@ -15,8 +15,12 @@ public class Chamado
     public DateTime UltimaAtividade { get; private set; }
     public DateTime? DataFinalizacao { get; private set; }
     public StatusChamado StatusChamado { get; private set; }
+    
+    //Propriedades para o EF carregar a relação
+    public ApplicationUser Responsavel { get; private set; }
+    public ApplicationUser Solicitante { get; private set; }
 
-    public Chamado(ApplicationUser solicitanteId, ApplicationUser responsavelId, string titulo, string descricao, DateTime dataCriacao)
+    public Chamado(Guid solicitanteId, Guid responsavelId, string titulo, string descricao, DateTime dataCriacao)
     {
         SolicitanteId = solicitanteId;
         ResponsavelId = responsavelId;
@@ -24,6 +28,7 @@ public class Chamado
         Descricao = descricao;
         DataCriacao = UltimaAtividade = dataCriacao;
         StatusChamado = StatusChamado.Aberto;
+        Mensagens = new List<MensagemChamado>();
     }
     
     private void VerificarStatusChamado()
@@ -34,7 +39,7 @@ public class Chamado
         }
     }
 
-    public void AdicionarMensagem(string mensagem, ApplicationUser usuario)
+    public void AdicionarMensagem(string mensagem, Guid usuario)
     {
         VerificarStatusChamado();
         MensagemChamado novaMensagen = new MensagemChamado(ChamadoId, mensagem, DateTime.Now, usuario);

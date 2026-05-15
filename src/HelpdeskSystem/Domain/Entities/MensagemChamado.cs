@@ -8,10 +8,16 @@ public class MensagemChamado
     public int ChamadoAssociado { get; private set; }
     public string Mensagem { get; private set; }
     public DateTime DataCriacao { get; private set; }
-    public ApplicationUser UsuarioDono { get; private set; }
+    public Guid UsuarioDono { get; private set; }
     public bool Editado { get; private set; }
+    
+    //Propriedades para o EF carregar a relação
+    public Chamado Chamado { get; private set; }
+    public ApplicationUser Autor { get; private set; } = null!;
 
-    public MensagemChamado(int chamadoAssociado, string mensagem, DateTime dataCriacao, ApplicationUser usuario)
+    
+    public MensagemChamado() { }
+    public MensagemChamado(int chamadoAssociado, string mensagem, DateTime dataCriacao, Guid usuario)
     {
         ChamadoAssociado = chamadoAssociado;
         Mensagem = mensagem;

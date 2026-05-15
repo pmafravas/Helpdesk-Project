@@ -12,8 +12,7 @@ public class ApplicationUserConfiguration : IEntityTypeConfiguration<Application
         builder.ToTable("Users");
         builder.HasKey(c => c.Id);
         builder.Property(u => u.UserName).IsRequired().HasMaxLength(100);
-        
-        //Relação da tabela Chamados com Users
-        builder.HasMany(u => u.Chamados);
+        builder.HasMany(u => u.ChamadosAbertos).WithOne(c => c.Solicitante).HasForeignKey(c => c.SolicitanteId).OnDelete(DeleteBehavior.Restrict);
+        builder.HasMany(u => u.ChamadosAtribuidos).WithOne(c => c.Responsavel).HasForeignKey(c => c.ResponsavelId).OnDelete(DeleteBehavior.Restrict);
     }
 }

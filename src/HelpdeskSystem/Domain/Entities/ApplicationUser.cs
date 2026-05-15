@@ -10,5 +10,6 @@ public class ApplicationUser : IdentityUser<Guid>
     public Cargo Cargo { get; private set; }
     
     //Lista de chamados abertos pelo User - Instanciar aqui vai facilitar a listagem no Front-End
-    public IReadOnlyCollection<Chamado> Chamados { get; private set; }
+    public IReadOnlyCollection<Chamado> ChamadosAbertos { get; private set; }
+    public IReadOnlyCollection<Chamado> ChamadosAtribuidos { get; private set; }
 }
